@@ -1,0 +1,210 @@
+<!-- ctrl+k+u/23 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Kad Resume Genrator</title>
+<!--bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- html -->
+ <div class="conatiner" id="cv-form">
+    <h1 class="text-center my-2 txt">D-Kad Resume Genrator</h1>
+    <p class="text-center temp">For Easy Resume</p>
+    <div class="row">
+        <!-- first col (totaly 12 col we are taking 6 bcoz it duivide exactly 2 i.e[12/2=6]) -->
+        <div class="col-md-6">
+            <h3>Personal Information</h3>
+            <!-- here we are to add informataion in first column -->
+            <!-- For  Name -->
+            <div class="form-group mt-2">
+                <label for="nameField">Your Name</label>
+                <!-- we used "id" bcoz we are going to fetch the name in javascript using this"id -->
+                <input type="text" id="nameField" placeholder="Enter Your Name" class="form-control">
+            </div>
+           <!-- For  phone -->
+            <div class="form-group mt-2">
+                <label for="contactField">Your Phone Number</label>              
+                <input type="text" id="contactField" placeholder="Enter Your phone number" class="form-control">
+            </div>
+            <div class="form-group mt-2">
+                <label for="nameField">Your E-Mail</label>
+                <!-- we used "id" bcoz we are going to fetch the name in javascript using this"id -->
+                <input type="text" id="emailField" placeholder="Enter Your Mail" class="form-control">
+            </div>
+            <!-- For  Adress -->
+            <div class="form-group mt-2">
+                <label for="addressField">Your Adress</label>              
+                <textarea  id="addressField" placeholder="Enter Your Adress" class="form-control"></textarea>
+            </div>
+            <!-- image -->
+            <div class="form-group mt-3">
+                <label for="">Select Your Picture</label>
+                <input id="imgField" type="file" class="form-control">
+            </div>
+            <!-- Links -->
+            <p class="text-secondary">Important Links</p>
+            <div class="form-group mt-2">
+                <label for="fbField">Facebook</label>              
+                <input type="text" id="fbField" placeholder="Enter Here" class="form-control">
+            </div>
+            <div class="form-group mt-2">
+                <label for="instaField">Instagram</label>              
+                <input type="text" id="instaField" placeholder="Enter Here" class="form-control">
+            </div>
+            <div class="form-group mt-2">
+                <label for="linkedFeild">LinkedIn</label>              
+                <input type="text" id="linkedFeild" placeholder="Enter Here" class="form-control">
+            </div>
+        </div>
+        <!-- seconf col other half -->
+        <div class="col-md-6">
+             <h3>Professional Information</h3>
+             <div class="form-group mt-2">
+                <label for="">Objective</label>              
+                <textarea id="objectiveField" placeholder="Enter here " class="form-control " ></textarea>
+            </div>
+            <!-- Work Expreience -->
+            <div class="form-group mt-2" id="we">
+                <label for="">Work Expreience </label>              
+                <textarea  placeholder="Enter here " class="form-control weField " ></textarea>
+                <div class="container text-center mt-2 " id="weAddButton">
+                    <button onclick="addNewWWEField()" class="btn btn-primary btn-sm">Add</button>
+                </div>
+            </div>
+            <!-- Hobbiess -->
+            <div class="form-group mt-2" id="hb">
+                <label for="">Hobbies </label>              
+                <textarea  placeholder="Enter here " class="form-control hbField" ></textarea>
+                <div class="container text-center mt-2 " id="hbAddButton">
+                    <button onclick="addNewhbField()" class="btn btn-primary btn-sm">Add</button>
+                </div>
+            </div>
+            <!-- Qualification -->
+            <div class="form-group mt-2" id="aq">
+                <label for="">Academic Qualification </label>              
+                <textarea  placeholder="Enter here " class="form-control eqField " ></textarea>
+                <div class="container text-center mt-2" id="aqAddButton">
+                    <button onclick="addNewAQField()" class="btn btn-primary btn-sm">Add</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="conatiner text-center mt-3">
+        <button onclick="generateCV()" class="btn btn-primary btn-lg">Generate CV</button>
+    </div>
+ </div>
+
+<!-- footer -->
+<!-- <section class="footer">
+ 
+    <div class="credit">Created By <span>Mohammed Afthab</span> | All Rights Reserved | Bhuthanakdhu | Chikamagaluru </div>
+
+</section> -->
+<!-- FOOTER -->
+<footer id="footer">
+    <div class="container">
+        <div class="row text-center">	
+            <p>
+                &COPY BHUTHANAKADHU | DESIGN BY <a href="https://www.instagram.com/apu_aftab/   "> MOHAMMED AFTHAB</a>
+                <span class="social">
+                    <a href="#"><i class="fa fa-facebook-square"></i></a>
+                    <a href="#"><i class="fa fa-twitter-square"></i></a> 
+                    <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                </span>
+            </p>
+        </div>
+    </div>		
+</footer>
+<!-- FOOTER ENDS -->	
+
+ <!-- Cv template -->
+<div class="container" id="cv-template">
+    <div class="row">
+        <div class="col-md-4 text-center py-5 backg">
+            <!-- First Column -->
+            <img src="profile.jpg" class="img-fluid myimg" id="imgTemplate">
+            <div class="container">
+                <!-- personal information -->
+                <p id="nameT1">Mohammed Afthab</p>
+                <p id="contactT">+919448759021,+916361239026</p>
+                <p id="addressT">Bhuthanakadhu,Chikmagaluru,India</p>
+                <p id="emialT">xyz@gmail.com</p>
+
+                <hr/>
+                <!-- Personal Links -->
+                <p><a id="fbT" href="#1">https://www.facebook.com</a></p>
+                <p><a id="instaT" href="#1">https://www.instagram.com</a></p>
+                <p><a id="linkedT" href="#1">https://www.linkedin.com</a></p>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <!-- Second column -->
+            <h1 id="nameT2" class="text-center" style="font-weight:980">Mohammed Afthab</h1>
+            <!-- Cards -->
+            <div class="card mt-4">
+                <div class="card-header backg">
+                   <h3>Objective</h3>
+
+                </div>
+                <div class="card-body">
+                    <p id="objectiveT">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem incidunt fugit tenetur, aliquam labore corrupti illum architecto iure itaque iusto repellendus optio placeat suscipit deserunt doloremque tempora. Possimus, cupiditate! Ducimus obcaecati provident non est dolore tenetur reiciendis consequatur rerum corporis quam debitis, animi quas maxime ipsum consequuntur molestias blanditiis velit?</p>
+
+                </div>
+            </div>
+            <!-- Wrok EXp -->
+            <div class="card mt-4">
+                <div class="card-header backg">
+                   <h3>Work Expreience</h3>
+                </div>
+                <div class="card-body">
+                   <ul id="weT">
+                    <li></li>
+                   <ul>
+                </div>
+            </div>     
+            <!-- hobby -->
+            <div class="card mt-4">
+                <div class="card-header backg">
+                   <h3>Hobbies</h3>
+                </div>
+                <div class="card-body">
+                   <ul id="hbT">
+                    <li></li>
+                   <ul>
+                </div>
+            </div>  
+            <!-- Academic Qualification -->
+            <div class="card mt-4">
+                <div class="card-header backg">
+                   <h3>Academic Qualification</h3>
+                </div>
+                <div class="card-body">
+                   <ul id="aqT">
+                    <li</li>
+                   <ul>
+                </div>
+            </div> 
+                <!-- print button -->
+                <div class="container mt-3 text-center">
+                    <button onclick="printCV()" class="btn backg">Print CV</button>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--bootstrap js -->    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="script.js"></script>   
+</body>
+</html>
